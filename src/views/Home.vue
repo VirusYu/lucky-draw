@@ -46,16 +46,20 @@ const buttons = [
     fonts: [{ text: "开始", top: "35%" }],
   },
 ];
+
+function random() {
+  return Math.floor(Math.random() * prizes.length);
+}
 function startCallBack() {
   // 开始游戏
   currentInstance.ctx.$refs.myLucky.play();
   // 假设接口的请求速度是5s
   setTimeout(() => {
     // 5s后拿到后端返回的中奖索引
-    const index = 0;
+    const index = random();
     // 然后停止游戏 (缓慢停止)
     currentInstance.ctx.$refs.myLucky.stop(index);
-  }, 5000);
+  }, 2000);
 }
 function endCallBack(prize) {
   // 当完全停止时, 触发回调函数
